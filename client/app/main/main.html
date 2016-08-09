@@ -1,0 +1,96 @@
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>BEACH - Data Collection Website</h1>
+    <p class="lead">(Bettering the Evaluation And Care Health) - Morbidity and Treatment Survay - National</p>
+    <img src="assets/images/usydneylogo.png" alt="I'm Yeoman" width="35" height="40"><small> The University of Sydney</small>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">BEACH Form</h1>
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="encnumber">Encounter Number:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="encnumber" placeholder="Encounter Number" ng-model="main.encnum">
+            <span class="help-block">001-108</span>
+          </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="starttm">Start time:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="starttm" placeholder="Start time" ng-model="main.starttime">
+            <span class="help-block">1:30 PM</span>
+          </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="finishtm">Finish time:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="finishtm" placeholder="Finish time" ng-model="main.finishtime">
+            <span class="help-block">2:30 PM</span>
+          </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="encdate">Date of Encounter:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="encdate" placeholder="Date of Encounter" ng-model="main.encdate">
+            <span class="help-block">dd/mm/yyyy</span>
+          </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="medicare">Medicare Item Nos:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="medicare" placeholder="Item Nos" ng-model="main.medicare">
+            <span class="help-block">10993 or NHV-B</span>
+          </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="sel1">Non-Medicare:</label>
+          <div class="col-sm-4">
+            <select class="form-control placeholder" id="sel1" ng-model="main.nonmedicare">
+              <option value="" hidden="hidden">Choose here</option>
+              <option value="1">Workers comp paid</option>
+              <option value="2">State Govt/Other paid</option>
+              <option value="3">No Charge</option>
+            </select>
+          </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary" ng-click="main.addBForm()">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <md-list>
+        <h1 class="page-header">BEACH Forms</h1>
+         <md-list-item class="md-2-line" ng-repeat="thing in main.awesomeThings" ng-click="main.goToBForm(thing)">
+           <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
+           <div class="md-list-item-text" layout="column">
+             <h3 class="media-title"><strong>{{thing.encnum}}</strong></h3>
+             Date of encounter: {{thing.encdate}}<br>
+             Start time: {{thing.starttime}}<br>
+             Finish time: {{thing.finishtime}}<br>
+             Medicare: {{thing.medicare}}<br>
+             Non-Medicare: {{thing.nonmedicare}}<br>
+           </div>
+           <md-button class="md-secondary" ng-click="main.deleteBForm(thing)">Delete</md-button>
+         </md-list-item>
+      </md-list>
+
+    </div>
+  </div>
+</div>

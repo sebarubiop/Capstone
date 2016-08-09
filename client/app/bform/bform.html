@@ -1,0 +1,48 @@
+<md-content flex-offset="5" flex="90">
+  <div flex-sm="100" flex-xs="100" layout="row">
+    <div flex="5">
+      <md-button class="md-fab md-mini md-primary" aria-label="Go Back" ng-click="goBack()">
+        <i class="fa fa-arrow-left"></i>
+      </md-button>
+    </div>
+
+    <div flex>
+      <md-list-item class="md-3-line">
+        <div hide-sm hide-xs>
+          <!--<img ng-src="{{bform.iconurl}}" alt="MEAN" style="max-height:120px; height: auto; margin-right:20px;margin-top:10px;">-->
+        </div>
+        <div flex-sm="100" flex-xs="100" class="md-list-item-text" layout="column">
+          <h2>{{ bform.encnum }}</h2>
+          <h3>{{ bform.starttime }} || {{ bform.finishtime }}</h3>
+          <h4>{{ bform.encdate }}, {{ bform.medicare || bform.owner.name }}</h4>
+        </div>
+      </md-list-item>
+    </div>
+  </div>
+  <hr>
+</md-content>
+
+<md-content flex-offset="5" flex="90" ng-if="!editingReason">
+  <div flex-sm="100" flex-xs="100" layout="column">
+    <md-list>
+      <md-list-item aria-label="BeachForm" ng-click="goToWeekPlan(weekplan, $event)" ng-repeat="reas in bform.reason | orderBy : 'rnum'">
+        <div flex flex-sm="100" flex-xs="100" layout="row">
+          <p flex="15">Reason Number: {{reas.rnum}} </p>
+          <p flex>Reason Name: {{reas.name}}</p>
+          <div flex="5">
+            <md-button ng-click="editReason(reas)" class="md-icon-button" aria-label="Open sample menu">
+              <i class="fa fa-pencil"></i>
+            </md-button>
+          </div>
+        </div>
+        <md-divider></md-divider>
+      </md-list-item>
+    </md-list>
+  </div>
+</md-content>
+
+<md-content layout-padding flex-offset="30" flex="40" ng-if="editingReason" class="animate-new-course">
+  <md-button aria-label="Undo changes" ng-click="undoReasonEdit()" class="md-raised md-warning">
+        <i class="fa fa-undo"></i> Cancel
+  </md-button>
+</md-content>
